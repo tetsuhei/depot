@@ -1,3 +1,11 @@
+#---
+# Excerpted from "Agile Web Development with Rails, 4rd Ed.",
+# published by The Pragmatic Bookshelf.
+# Copyrights apply to this code. It may not be used to create training material, 
+# courses, books, articles, and the like. Contact us if you are in doubt.
+# We make no guarantees that this code is fit for any purpose. 
+# Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
+#---
 class CartsController < ApplicationController
   # GET /carts
   # GET /carts.xml
@@ -12,7 +20,7 @@ class CartsController < ApplicationController
 
   # GET /carts/1
   # GET /carts/1.xml
- def show
+  def show
     begin
       @cart = Cart.find(params[:id])
     rescue ActiveRecord::RecordNotFound
@@ -77,12 +85,12 @@ class CartsController < ApplicationController
   # DELETE /carts/1
   # DELETE /carts/1.xml
   def destroy
-    @cart = Cart.find(params[:id])
+    @cart = current_cart
     @cart.destroy
     session[:cart_id] = nil
 
     respond_to do |format|
-      format.html { redirect_to(store_url, :notice => 'Your cart is currently empty') }
+      format.html { redirect_to(store_url) }
       format.xml  { head :ok }
     end
   end
