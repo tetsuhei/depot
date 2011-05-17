@@ -31,7 +31,7 @@ Depot::Application.configure do
     :domain => "nak.com",
     :authentication => "plain",
     :user_name => "tetsuhei",
-    :password => "AmoaDios",
+    :password => "secretfoopwd",
     :enable_starttls_auto => true
     }
 end
